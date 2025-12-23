@@ -95,6 +95,20 @@
 
                 </LinearLayout>
 
+                <EditText
+                    android:id="@+id/searchField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:background="@drawable/white_full_corner_bg"
+                    android:padding="12dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:hint="Search Task..."
+                    android:layout_marginBottom="8dp"
+                    android:elevation="5dp"
+                    />
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="8dp"
