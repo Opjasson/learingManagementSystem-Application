@@ -15,16 +15,16 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/blue_gray"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:orientation="horizontal"
-                android:paddingHorizontal="24dp">
+                android:paddingHorizontal="24dp"
+                android:visibility="visible">
 
                 <ImageView
                     android:id="@+id/imageView3"
@@ -67,8 +67,9 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -99,26 +100,44 @@
                     android:id="@+id/searchField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:background="@drawable/white_full_corner_bg"
-                    android:padding="12dp"
                     android:layout_marginHorizontal="12dp"
-                    android:hint="Search Task..."
                     android:layout_marginBottom="8dp"
+                    android:background="@drawable/white_full_corner_bg"
                     android:elevation="5dp"
-                    />
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="8dp"
-                    android:layout_marginHorizontal="24dp"
-                    android:background="@color/black_gray"
-                    android:padding="8dp">
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:ems="10"
+                    android:hint="Search Task..."
+                    android:inputType="text"
+                    android:padding="12dp" />
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lesson"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ProgressBar
+                    android:id="@+id/lessonLoad"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/lessonView" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/lessonView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
