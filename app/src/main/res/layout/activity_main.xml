@@ -109,19 +109,29 @@
                     android:inputType="text"
                     android:padding="12dp" />
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:layout_margin="15dp"
+                    android:background="@color/black_gray">
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
             </LinearLayout>
 
             <TextView
                 android:id="@+id/textView12"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
                 android:text="Lesson"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:padding="12dp">
 
                 <ProgressBar
                     android:id="@+id/lessonLoad"
