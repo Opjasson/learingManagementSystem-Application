@@ -12,8 +12,6 @@ class LessonAdapter(val items: MutableList<LessonModal>):
 
         private lateinit var context: Context
 
-
-
         inner class Viewholder(val binding: ViewholderLessonBinding):
         RecyclerView.ViewHolder(binding.root)
 
@@ -28,6 +26,12 @@ class LessonAdapter(val items: MutableList<LessonModal>):
             holder.binding.descTxt.text = items[position].description
         }
         override fun getItemCount(): Int = items.size
+
+        fun updateData(newItems: MutableList<LessonModal>) {
+            items.clear()
+            items.addAll(newItems)
+            notifyDataSetChanged()
+        }
     }
 
 

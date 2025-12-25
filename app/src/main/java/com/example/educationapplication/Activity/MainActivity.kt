@@ -3,12 +3,16 @@ package com.example.educationapplication.Activity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.widget.addTextChangedListener
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.educationapplication.Adapter.LessonAdapter
+import com.example.educationapplication.Domain.LessonModal
 import com.example.educationapplication.MainViewModal.MainViewModal
 import com.example.educationapplication.R
 import com.example.educationapplication.databinding.ActivityMainBinding
@@ -16,6 +20,9 @@ import com.example.educationapplication.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val viewModal= MainViewModal()
+
+    private val lessonAdapter = LessonAdapter(mutableListOf())
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,17 +50,29 @@ class MainActivity : AppCompatActivity() {
                 binding.searchField.visibility = View.VISIBLE
             }
         }
+
     }
 
     private fun initLesson() {
-        binding.lessonLoad.visibility = View.VISIBLE
+        val lessonAdapter = LessonAdapter(mutableListOf())
+        binding.lessonView.adapter = lessonAdapter
 
-        viewModal.loadLesson().observeForever {
+        viewModal.loadAllLesson()
+
+        binding.searchField.addTextChangedListener {
+            val keyword = it.toString().toUpperCase().trim()
+            viewModal.searchValue(keyword)
+        }
+
+        viewModal.searchResult.observe(this) {
+            list ->
             binding.lessonView.layoutManager = LinearLayoutManager(this@MainActivity,
                 LinearLayoutManager.VERTICAL, false
             )
-            binding.lessonView.adapter = LessonAdapter(it)
-            binding.lessonLoad.visibility = View.GONE
+            lessonAdapter.updateData(list)
         }
-    }
+
+        }
+
+
 }

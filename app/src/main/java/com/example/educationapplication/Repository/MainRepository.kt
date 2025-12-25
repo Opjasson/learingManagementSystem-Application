@@ -10,22 +10,26 @@ import com.google.firebase.firestore.SnapshotListenOptions
 class MainRepository {
     private val firebaseDatabase = FirebaseFirestore.getInstance()
 
-    fun loadLesson(): LiveData<MutableList<LessonModal>> {
-        val listData = MutableLiveData<MutableList<LessonModal>>()
-
+    fun loadLesson(callback: (MutableList<LessonModal>) -> Unit) {
         firebaseDatabase.collection("lessons")
-            .addSnapshotListener { snapshot, error ->
-                if (error != null) return@addSnapshotListener
-
-                val list = mutableListOf<LessonModal>()
-                snapshot?.documents?.forEach { document ->
-                    val item = document.toObject(LessonModal::class.java)
-                    item?.let { list.add(it) }
-                }
-
-                listData.value = list
+            .get()
+            .addOnSuccessListener {
+                callback(it.toObjects(LessonModal::class.java).toMutableList())
             }
+    }
 
-        return listData
+    fun searchItems(
+        keyword: String,
+        callback: (MutableList<LessonModal>) -> Unit
+    ) {
+        FirebaseFirestore.getInstance()
+            .collection("lessons")
+            .orderBy("name")
+            .startAt(keyword)
+            .endAt(keyword + "\uf8ff")
+            .get()
+            .addOnSuccessListener {
+                callback(it.toObjects(LessonModal::class.java).toMutableList())
+            }
     }
 }
