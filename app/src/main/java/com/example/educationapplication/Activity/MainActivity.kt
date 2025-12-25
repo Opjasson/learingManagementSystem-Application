@@ -1,6 +1,7 @@
 package com.example.educationapplication.Activity
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -36,7 +37,11 @@ class MainActivity : AppCompatActivity() {
         binding.searchField.visibility = View.GONE
 
         binding.glassBtn.setOnClickListener {
-            binding.searchField.visibility = View.VISIBLE
+            if (binding.searchField.visibility === 0) {
+                binding.searchField.visibility = View.GONE
+            }else{
+                binding.searchField.visibility = View.VISIBLE
+            }
         }
     }
 
@@ -48,6 +53,7 @@ class MainActivity : AppCompatActivity() {
                 LinearLayoutManager.VERTICAL, false
             )
             binding.lessonView.adapter = LessonAdapter(it)
+            binding.lessonLoad.visibility = View.GONE
         }
     }
 }
