@@ -2,15 +2,21 @@ package com.example.educationapplication.Activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.educationapplication.MainViewModal.AuthViewModal
+import com.example.educationapplication.MainViewModal.MainViewModal
 import com.example.educationapplication.R
+import com.example.educationapplication.Repository.MainRepository
 import com.example.educationapplication.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
+    private val viewModal = AuthViewModal()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +32,22 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.loginBtn.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            var email = binding.emailTxt.text.toString().trim()
+            var password = binding.passwordTxt.text.toString().trim()
+
+            viewModal.login(email, password)
+        }
+
+        viewModal.loginResult.observe(this) {
+            result ->
+            result.onSuccess {
+                Toast.makeText(this, "Login berhasil", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, MainActivity::class.java))
+            }
+
+            result.onFailure {
+                Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+            }
         }
 
     }

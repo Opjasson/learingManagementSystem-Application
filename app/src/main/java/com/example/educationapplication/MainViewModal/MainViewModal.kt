@@ -30,4 +30,5 @@ private val repository = MainRepository()
             _searchResult.value = it
         }
     }
+
 }

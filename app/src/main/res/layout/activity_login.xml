@@ -65,22 +65,22 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/editTextText2"
+            android:id="@+id/emailTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:ems="10"
             android:inputType="text"
-            android:text="Name" />
+            android:hint="Email" />
 
         <EditText
-            android:id="@+id/editTextText3"
+            android:id="@+id/passwordTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:ems="10"
             android:inputType="text"
-            android:text="Password" />
+            android:hint="Password" />
 
         <TextView
             android:id="@+id/textView6"
