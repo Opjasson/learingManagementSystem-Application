@@ -8,8 +8,8 @@ import com.example.educationapplication.Repository.AuthRepository
 class AuthViewModal: ViewModel() {
     private val repository = AuthRepository()
 
-    private val _loginResult = MutableLiveData<Result<String>>()
-    val loginResult: LiveData<Result<String>> = _loginResult
+    private val _loginResult = MutableLiveData<Result<String>>() // state management yang datanya bisa dirubah
+    val loginResult: LiveData<Result<String>> = _loginResult // state management yang datanya hanya bisa dibaca/dilihat
 
     fun login(email: String, password: String) {
         repository.loginAuth(email, password) {

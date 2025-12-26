@@ -42,6 +42,7 @@
                     android:layout_weight="1"
                     android:paddingStart="8dp"
                     android:text="Hello Jasson"
+                    android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -85,6 +86,7 @@
                         android:layout_marginRight="8dp"
                         android:fontFamily="@font/nunito_extrabold"
                         android:text="Your Progress Today"
+                        android:textColor="@color/black"
                         android:textSize="36sp" />
 
                     <ImageView
@@ -107,7 +109,8 @@
                     android:ems="10"
                     android:hint="Search Task..."
                     android:inputType="text"
-                    android:padding="12dp" />
+                    android:padding="12dp"
+                    android:textColor="@color/black" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -125,6 +128,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:text="Lesson"
+                android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 

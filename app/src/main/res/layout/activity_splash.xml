@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B8CBEBFA"
+    android:background="@color/blue_gray"
     tools:context=".Activity.SplashActivity">
 
     <ImageView
@@ -65,7 +65,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/white_blue_full_corners_bg"
-                android:text="Get Started" />
+                android:text="Get Started"
+                android:textColor="@color/black" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
