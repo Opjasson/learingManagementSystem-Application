@@ -39,14 +39,11 @@ class LoginActivity : AppCompatActivity() {
             var email = binding.emailTxt.text.toString().trim()
             var password = binding.passwordTxt.text.toString().trim()
 
-
-
             if (email.isEmpty() || password.isEmpty()){
                 binding.LAlertForm.visibility = View.VISIBLE
             }else{
                 viewModal.login(email, password)
             }
-
 
         }
 
