@@ -2,6 +2,8 @@ package com.example.educationapplication.Activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -31,11 +33,21 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
+        binding.LAlertForm.visibility = View.GONE
+
         binding.loginBtn.setOnClickListener {
             var email = binding.emailTxt.text.toString().trim()
             var password = binding.passwordTxt.text.toString().trim()
 
-            viewModal.login(email, password)
+
+
+            if (email.isEmpty() || password.isEmpty()){
+                binding.LAlertForm.visibility = View.VISIBLE
+            }else{
+                viewModal.login(email, password)
+            }
+
+
         }
 
         viewModal.loginResult.observe(this) {
