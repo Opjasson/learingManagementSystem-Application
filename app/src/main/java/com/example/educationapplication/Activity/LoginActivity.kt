@@ -35,6 +35,13 @@ class LoginActivity : AppCompatActivity() {
 
         binding.LAlertForm.visibility = View.GONE
 
+//        Navigate register page
+        binding.LGotoRegis.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
+        }
+
+
+//        Handle login button
         binding.loginBtn.setOnClickListener {
             var email = binding.emailTxt.text.toString().trim()
             var password = binding.passwordTxt.text.toString().trim()
@@ -50,7 +57,8 @@ class LoginActivity : AppCompatActivity() {
         viewModal.loginResult.observe(this) {
             result ->
             result.onSuccess {
-                Toast.makeText(this, "Login berhasil", Toast.LENGTH_SHORT).show()
+                message ->
+                Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, MainActivity::class.java))
             }
 
