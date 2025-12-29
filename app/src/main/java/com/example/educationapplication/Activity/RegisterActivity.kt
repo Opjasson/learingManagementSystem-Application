@@ -33,6 +33,13 @@ class RegisterActivity : AppCompatActivity() {
 
         binding.RAlertForm.visibility = View.GONE
 
+//        Navigate go to login page
+        binding.RGotoLogin.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
+
+
+//        Handle register
         regisBtn.setOnClickListener {
             val user = binding.RUsernameTxt.text.toString().trim()
             val email = binding.REmailTxt.text.toString().trim()
