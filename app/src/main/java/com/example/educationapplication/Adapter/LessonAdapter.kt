@@ -23,6 +23,7 @@ class LessonAdapter(val items: MutableList<LessonModal>):
 
         override fun onBindViewHolder(holder: LessonAdapter.Viewholder, position: Int) {
             holder.binding.nameTxt.text = items[position].name
+            holder.binding.lessonId.text = items[position].lessonId.toString()
             holder.binding.descTxt.text = items[position].description
         }
         override fun getItemCount(): Int = items.size
