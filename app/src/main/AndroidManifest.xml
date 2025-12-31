@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EducationApplication">
         <activity
+            android:name=".Activity.ShowLessonActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.RegisterActivity"
             android:exported="false" />
         <activity

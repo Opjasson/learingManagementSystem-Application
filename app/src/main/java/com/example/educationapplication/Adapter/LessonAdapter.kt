@@ -1,9 +1,12 @@
 package com.example.educationapplication.Adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.educationapplication.Activity.ShowLessonActivity
 import com.example.educationapplication.Domain.LessonModal
 import com.example.educationapplication.databinding.ViewholderLessonBinding
 
@@ -23,8 +26,13 @@ class LessonAdapter(val items: MutableList<LessonModal>):
 
         override fun onBindViewHolder(holder: LessonAdapter.Viewholder, position: Int) {
             holder.binding.nameTxt.text = items[position].name
-            holder.binding.lessonId.text = items[position].lessonId.toString()
+            holder.binding.lessonId.visibility = View.GONE
             holder.binding.descTxt.text = items[position].description
+
+            holder.itemView.setOnClickListener {
+                val intent = Intent(context, ShowLessonActivity::class.java)
+                context.startActivity(intent)
+            }
         }
         override fun getItemCount(): Int = items.size
 
