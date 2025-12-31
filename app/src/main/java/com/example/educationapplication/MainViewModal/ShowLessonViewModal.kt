@@ -5,17 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.educationapplication.Domain.TaskModal
 import com.example.educationapplication.Repository.ShowLessonRepository
+import com.google.android.gms.common.api.internal.StatusCallback
 
 class ShowLessonViewModal: ViewModel() {
     private val repository = ShowLessonRepository()
 
-    private val _task = MutableLiveData<MutableList<TaskModal>>()
-
-    val task : LiveData<MutableList<TaskModal>> = _task
-
-    fun loadData() {
-        repository.loadTask() {
-            _task.value = it
-        }
+    fun loadData(callback: (MutableList<TaskModal>) -> Unit) {
+        return repository.loadTask(callback)
     }
 }

@@ -3,7 +3,7 @@ package com.example.educationapplication.Domain
 import java.io.Serializable
 
 data class TaskModal(
-    var lessonId: Number = 0,
+    var lessonId: Long = 0,
     var soal: String = "",
     var pilihan1: String = "",
     var pilihan2: String = "",
