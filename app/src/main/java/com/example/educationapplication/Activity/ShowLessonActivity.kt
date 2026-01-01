@@ -1,6 +1,7 @@
 package com.example.educationapplication.Activity
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -36,6 +37,7 @@ class ShowLessonActivity : AppCompatActivity() {
     }
 
     fun initShowTask() {
+        binding.loadTask.visibility = View.VISIBLE
         val taskAdapter = TaskAdapter(mutableListOf())
         binding.taskView.adapter = taskAdapter
 
@@ -43,7 +45,10 @@ class ShowLessonActivity : AppCompatActivity() {
             list ->
             binding.taskView.layoutManager = LinearLayoutManager(this)
             binding.taskView.adapter = TaskAdapter(list)
+            binding.loadTask.visibility = View.GONE
         }
+
+        binding.backBtn.setOnClickListener { finish() }
     }
 
 }
