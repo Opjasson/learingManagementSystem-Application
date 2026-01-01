@@ -1,5 +1,6 @@
 package com.example.educationapplication.Activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
@@ -11,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.educationapplication.Adapter.LessonAdapter
 import com.example.educationapplication.Adapter.TaskAdapter
+import com.example.educationapplication.Domain.LessonModal
 import com.example.educationapplication.MainViewModal.ShowLessonViewModal
 import com.example.educationapplication.R
 import com.example.educationapplication.databinding.ActivityShowLessonBinding
@@ -37,18 +39,29 @@ class ShowLessonActivity : AppCompatActivity() {
     }
 
     fun initShowTask() {
-        binding.loadTask.visibility = View.VISIBLE
-        val taskAdapter = TaskAdapter(mutableListOf())
-        binding.taskView.adapter = taskAdapter
+        binding.apply {
+//            Get context from put extra
+            val item = intent.getSerializableExtra("object") as? LessonModal
+//            Put value name lesson
+            item?.let {
+                nameLesson.text = item.name
+            } ?: run {
+                nameLesson.text = "name"
+            }
+
+            loadTask.visibility = View.VISIBLE
+            val taskAdapter = TaskAdapter(mutableListOf())
+            taskView.adapter = taskAdapter
+
+            backBtn.setOnClickListener { finish() }
+        }
 
         viewModal.loadData{
-            list ->
+                list ->
             binding.taskView.layoutManager = LinearLayoutManager(this)
             binding.taskView.adapter = TaskAdapter(list)
             binding.loadTask.visibility = View.GONE
         }
-
-        binding.backBtn.setOnClickListener { finish() }
     }
 
 }
