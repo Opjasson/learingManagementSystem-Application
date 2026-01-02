@@ -39,8 +39,8 @@ class LessonAdapter(val items: MutableList<LessonModal>):
             holder.itemView.setOnClickListener {
                 Handler(Looper.getMainLooper()).postDelayed({
                     val intent = Intent(context, ShowLessonActivity::class.java).apply {
-                        putExtra("id", item)
-                        putExtra("title", item)
+                        putExtra("id", item.lessonId)
+                        putExtra("title", item.name)
                     }
                     ContextCompat.startActivity(context, intent, null)
                 }, 500)

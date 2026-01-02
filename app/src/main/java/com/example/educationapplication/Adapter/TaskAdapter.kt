@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.educationapplication.Activity.ShowLessonActivity
+import com.example.educationapplication.Domain.LessonModal
 import com.example.educationapplication.Domain.TaskModal
 import com.example.educationapplication.databinding.ViewholderLessonBinding
 import com.example.educationapplication.databinding.ViewholderShowtaskBinding
@@ -15,6 +16,12 @@ import com.example.educationapplication.databinding.ViewholderShowtaskBinding
 class TaskAdapter(val items: MutableList<TaskModal>):
 RecyclerView.Adapter<TaskAdapter.Viewholder>() {
     private lateinit var context: Context
+
+    fun setData(data: List<TaskModal>) {
+        items.clear()
+        items.addAll(data)
+        notifyDataSetChanged()
+    }
 
     inner class Viewholder(val binding: ViewholderShowtaskBinding):
         RecyclerView.ViewHolder(binding.root)
@@ -36,5 +43,6 @@ RecyclerView.Adapter<TaskAdapter.Viewholder>() {
 
     }
     override fun getItemCount(): Int = items.size
+
 
 }
