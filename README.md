@@ -1,3 +1,5 @@
+![Logo](cp.png)
+
 ## Getting Started
 
 Before starting, make sure you have Android Studio installed.  
