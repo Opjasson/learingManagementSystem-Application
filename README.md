@@ -7,11 +7,13 @@ Before starting, make sure you have Android Studio installed.
 ### 1. Initial Step:
 
 ```bash
+cd \.locationTarget
 git clone https://github.com/Opjasson/learingManagementSystem-Application.git
 ```
 
 ```file
-1. open file in Android Studio
+1. open Android Studio software
+2. open folder learningManagementSystem-Application in android studio
 2. wait until the graddle installation is complete
 ```
 
